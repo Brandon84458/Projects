@@ -52,47 +52,77 @@ partial class Program
             case "ROCK":
                 if(inputPlayer == "ROCK")
                 {
-                    message = "DRAW!";
+                    message = "draw";
                 }
                 else if (inputPlayer == "PAPER")
                 {
-                    message = "PLAYER WINS!";
+                    message = "player";
                 }
                 else
                 {
-                    message = "CPU WINS!";
+                    message = "cpu";
                 }
                 break;
             case "PAPER":
                 if(inputPlayer == "ROCK")
                 {
-                    message = "CPU WINS!";
+                    message = "cpu";
                 }
                 else if (inputPlayer == "PAPER")
                 {
-                    message = "DRAW!";
+                    message = "draw";
                 }
                 else
                 {
-                    message = "PLAYER WINS!";
+                    message = "player";
                 }
                 break;
             case "SCISSORS":
                 if(inputPlayer == "ROCK")
                 {
-                    message = "PLAYER WINS!";
+                    message = "player";
                 }
                 else if (inputPlayer == "PAPER")
                 {
-                    message = "CPU WINS!";
+                    message = "cpu";
                 }
                 else
                 {
-                    message = "DRAW!";
+                    message = "draw";
                 }
                 break;
         }
 
         return message;
+    }
+
+    static string GetPlayerMove()
+    {
+        string move;
+
+        do
+        {
+            move = ReadLine(); // reads in players move
+
+            if (!ValidateInput(move))
+            {
+                Write("Please enter a valid move: ");
+            }
+        }
+        while (!ValidateInput(move));
+
+        return move;
+    }
+
+    static void Menu()
+    {
+        WriteLine(" ----------------------------------- ");
+        WriteLine(" | WELCOME TO ROCK, PAPER, SCISSORS | ");
+        WriteLine(" ----------------------------------- ");
+        WriteLine("Rules:");
+        WriteLine("  (1) ROCK > SCISSORS");
+        WriteLine("  (2) PAPER > ROCK");
+        WriteLine("  (3) SCISSORS > PAPER");
+        WriteLine("  (4) BEST OF THREE GAMES");
     }
 }
